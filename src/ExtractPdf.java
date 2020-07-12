@@ -185,10 +185,99 @@ public class ExtractPdf {
 		
 		return  ListToString(temp);
 	}
-	
-	
-	
-	
+	/**
+	 * Take out the data from m1_CO-MORBIDITIES table and change to CSV string.
+	 * List<String> m = lines.subList(38, 48);
+		m.remove(1);
+	 * */
+	public static String m1_CoMorbidities(List<String> m) {
+		ArrayList<String> temp = new ArrayList<String>();
+		List<String> n = new ArrayList<String>();
+		n.add(m.get(0).replaceAll("[a-zA-Z\\s+()]", ""));n.add(m.get(1).replaceAll("[a-zA-Z\\s+]", ""));
+		for(int i=2;i<7;i++) {
+			String line = m.get(i).replaceAll("[a-zA-Z\\s+]", "");
+			n.add(line.substring(0,3));
+			n.add(line.substring(3));
+		}
+		String line7 = m.get(7).replaceAll("[a-zA-Z\\s+]", "").substring(0,3);
+		n.add(line7);
+		for(String s:n) {
+			if(s.charAt(0)=='×') s = "Yes";
+			else if(s.charAt(1)=='×') s = "No";
+			else if(s.charAt(2)=='×') s = "Unknown";
+			
+			temp.add(s);
+		}
+		String line71 = m.get(7).replace("_", "").substring(61);
+		temp.add(line71);
+		String line8 = m.get(8).replaceAll("[a-zA-Z\\s+-]", "");
+			if(line8.charAt(0)=='×') line8 = "Yes-on ART";
+			else if(line8.charAt(1)=='×') line8 = "Yes-not on ART";
+			else if(line8.charAt(2)=='×') line8 = "No";
+			else line8 = "Unknown";
+		temp.add(line8);
+		
+		return  ListToString(temp);
+	}
+	/**
+	 * m1_PRE-ADMISSION & CHRONIC MEDICATION
+	 * Take out the data from target table and change to CSV string.
+	 * List<String> m = lines.subList(55, 58);
+	 * */
+	public static String m1_ChronicMedication(List<String> m) {
+		ArrayList<String> temp = new ArrayList<String>();
+		for(String s:m) {
+			s= s.replaceAll("[a-zA-Z\\s+()?-]", "");
+			if(s.charAt(0)=='×') s = "Yes";
+			else if(s.charAt(1)=='×') s = "No";
+			else if(s.charAt(2)=='×') s = "Unknown";
+			temp.add(s);
+		}
+		return  ListToString(temp);
+	}
+	/**
+	 * m1_SIGNS AND SYMPTIONS ON ADMISSION
+	 * Take out the data from target table and change to CSV string.
+	 * List<String> m = lines.subList(64, 81);
+	 * */
+	public static String m1_SymptomsAD(List<String> m) {
+		ArrayList<String> temp = new ArrayList<String>();
+		List<String> n = m.subList(0, 11);
+		//extract first 11 lines from this table [0-10]
+		for(String line:n) {
+			line = line.replaceAll("[a-zA-Z\\s+./()]", "");
+			String res = null;
+			if(line.charAt(0)=='×') res = "Yes";
+			else if(line.charAt(1)=='×') res = "No";
+			else if(line.charAt(2)=='×') res = "Unknown";
+			temp.add(res);
+			if(line.charAt(3)=='×') res = "Yes";
+			else if(line.charAt(4)=='×') res = "No";
+			else if(line.charAt(5)=='×') res = "Unknown";
+			temp.add(res);
+		}
+		//extract data from 11-15 until "If bleeding: specify site(s):"
+		List<String> rest = new ArrayList<>();
+		rest.add(m.get(11));rest.add(m.get(13));rest.add(m.get(15));
+		for(String line:rest) {
+			line = line.replaceAll("[a-zA-Z\\s+./():]", "");
+			if(line.charAt(0)=='×') line = "Yes";
+			else if(line.charAt(1)=='×') line = "No";
+			else if(line.charAt(2)=='×') line = "Unknown";
+			temp.add(line);
+		}
+		String line15 = m.get(15).replace(" Yes   No  ×Unk      If bleeding: specify site(s):", "");
+		temp.add(line15);
+		String line16 = m.get(16).replaceAll("[a-zA-Z\\s+./(),:]", "");
+		if(line16.charAt(0)=='×') line16 = "Yes";
+		else if(line16.charAt(1)=='×') line16 = "No";
+		else if(line16.charAt(2)=='×') line16 = "Unknown";
+		temp.add(line16);
+		String line161 = m.get(16).replace("Other Yes   No   ×Unk  If yes, specify:", "");
+		temp.add(line161);
+		
+		return  ListToString(temp);	
+	}
 	
 	
 	public static void main(String[] args) throws IOException {
@@ -196,12 +285,17 @@ public class ExtractPdf {
 //		for(int i=0;i<lines.size();i++) {
 //			System.out.println("line"+i+": "+lines.get(i));
 //		}
-		List<String> m = lines.subList(26, 35);
+		List<String> m = lines.subList(64, 81);
+		List<String> n = m.subList(0, 11);
+		List<String> rest = new ArrayList<>();
+		rest.add(m.get(11));rest.add(m.get(13));rest.add(m.get(15));
 		for(int i=0;i<m.size();i++) {
 			System.out.println("line"+i+": "+ m.get(i));
 		}
+		String line161 = m.get(16).replace("Other Yes   No   ×Unk  If yes, specify:", "");
 		
-		System.out.println(m1_Vitalsigns(m));
+		
+		System.out.println(m1_SymptomsAD(m));
 		
 		
 	}
