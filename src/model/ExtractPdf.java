@@ -1,3 +1,4 @@
+package model;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,6 +8,8 @@ import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.bouncycastle.util.Arrays;
+
+import model.FileTool;
 
 public class ExtractPdf {
 	/**
