@@ -289,13 +289,15 @@ public class ExtractPdf {
 		List<String> n = m.subList(0, 11);
 		List<String> rest = new ArrayList<>();
 		rest.add(m.get(11));rest.add(m.get(13));rest.add(m.get(15));
-		for(int i=0;i<m.size();i++) {
-			System.out.println("line"+i+": "+ m.get(i));
-		}
+//		for(int i=0;i<m.size();i++) {
+//			System.out.println("line"+i+": "+ m.get(i));
+//		}
 		String line161 = m.get(16).replace("Other Yes   No   ×Unk  If yes, specify:", "");
 		
 		
-		System.out.println(m1_SymptomsAD(m));
+		String stuff = m1_SymptomsAD(m);
+		String path = "E:\\test\\M1_SIGNS AND SYMPTOMS ON ADMISSION.txt";
+		FileTool.writeUpdate(path, stuff);
 		
 		
 	}
