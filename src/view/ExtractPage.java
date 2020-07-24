@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import controller.ExtractController;
 
@@ -13,12 +14,15 @@ import java.awt.Color;
 
 public class ExtractPage  {
 
-	private JButton BFButton,CICButton,DAVSButton,CMButton,PACMButton,SSAButton,overallButton,backButton;
+	private JButton BFButton,CICButton,DAVSButton,CMButton,PACMButton,SSAButton,overallButton,backButton,DMButton;
 	private JFrame frame;
 	private ExtractController controller;
 	/** Getters */
 	public JButton getBFButton() {
 		return this.BFButton;
+	}
+	public JButton getDMButton() {
+		return this.DMButton;
 	}
 	public JButton getCICButton() {
 		return this.CICButton;
@@ -85,48 +89,65 @@ public class ExtractPage  {
 		BFButton = new JButton("Basic Info");
 		BFButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
 		BFButton.setBounds(30, 74, 363, 54);
+		BFButton.addActionListener(controller);
 		frame.getContentPane().add(BFButton);
 
 		CICButton = new JButton("Clinical Inclusion Criteria");
 		CICButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		CICButton.setBounds(30, 138, 363, 54);
+		CICButton.setBounds(30, 205, 363, 54);
+		CICButton.addActionListener(controller);
 		frame.getContentPane().add(CICButton);
 
 		DAVSButton = new JButton("Date of Onset and Admission Vital Signs");
 		DAVSButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		DAVSButton.setBounds(30, 205, 363, 54);
+		DAVSButton.setBounds(30, 269, 363, 54);
+		DAVSButton.addActionListener(controller);
+		
 		frame.getContentPane().add(DAVSButton);
 
 		CMButton = new JButton("Co-Morbidities");
 		CMButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		CMButton.setBounds(30, 269, 363, 54);
+		CMButton.setBounds(30, 333, 363, 54);
+		CMButton.addActionListener(controller);
 		frame.getContentPane().add(CMButton);
 
 		PACMButton = new JButton("Pre-Admission & Chronic Medication");
 		PACMButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		PACMButton.setBounds(30, 333, 363, 54);
+		PACMButton.setBounds(30, 397, 363, 54);
+		PACMButton.addActionListener(controller);
 		frame.getContentPane().add(PACMButton);
 
 		SSAButton = new JButton("Signs and Symptoms on Admission");
 		SSAButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		SSAButton.setBounds(30, 397, 363, 54);
+		SSAButton.setBounds(420, 74, 363, 54);
+		SSAButton.addActionListener(controller);
 		frame.getContentPane().add(SSAButton);
 
 		overallButton = new JButton("OVERALL");
 		overallButton.setFont(new Font("Century Gothic", Font.BOLD, 18));
-		overallButton.setBounds(449, 397, 334, 53);
+		overallButton.setBounds(434, 228, 334, 53);
+		overallButton.addActionListener(controller);
 		frame.getContentPane().add(overallButton);
 		
 		backButton = new JButton("BACK");
 		backButton.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-		backButton.setBounds(639, 21, 144, 54);
+		backButton.setBounds(639, 396, 144, 54);
 		backButton.addActionListener(controller);
 		frame.getContentPane().add(backButton);
 		
 		JLabel lblChooseASection = new JLabel("<html>Choose a section to extract<br>or the whole PDF</html>");
 		lblChooseASection.setForeground(Color.GRAY);
 		lblChooseASection.setFont(new Font("Eras Light ITC", Font.BOLD, 20));
-		lblChooseASection.setBounds(449, 112, 273, 80);
+		lblChooseASection.setBounds(468, 138, 273, 80);
 		frame.getContentPane().add(lblChooseASection);
+		
+		DMButton = new JButton("Demographics");
+		DMButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+		DMButton.setBounds(30, 138, 363, 54);
+		DMButton.addActionListener(controller);
+		frame.getContentPane().add(DMButton);
+	}
+	public void success() {
+		JOptionPane.showInternalMessageDialog(null, "All done","extract sucess!", JOptionPane.INFORMATION_MESSAGE); 
 	}
 }

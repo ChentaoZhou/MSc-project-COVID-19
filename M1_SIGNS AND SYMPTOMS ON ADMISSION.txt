@@ -1,0 +1,3 @@
+History of fever,Lower chest wall indrawing,Cough,Headache,with sputum production,Altered consciousness/confusion,with haemoptysis,Seizures,Sore throat,Abdominal pain,Runny nose (rhinorrhoea),Vomiting / Nausea,Wheezing,Diarrhoea,Chest pain,Conjunctivitis,Muscle aches (myalgia),Skin rash,Joint pain (arthralgia),Skin ulcers,Fatigue / Malaise,Lymphadenopathy,Shortness of breath,Bleeding (Haemorrhage),Inability to walk,If bleeding: specify site(s):,Other,If yes specify:
+Yes,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Yes,No,Unknown,    ,Unknown,    
+Yes,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Yes,No,Unknown,    ,Unknown,    

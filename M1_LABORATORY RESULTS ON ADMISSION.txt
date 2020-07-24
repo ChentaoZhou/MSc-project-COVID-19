@@ -1,0 +1,1 @@
+Haemoglobin (g/L),Creatinine (μmol/L),WBC count (x109/L),Sodium (mEq/L),Haematocrit (%),Potassium (mEq/L),Platelets (x109/L),Procalcitonin (ng/mL),APTT/APTR,CRP (mg/L),PT (seconds),LDH (U/L),INR,Creatine kinase (U/L),ALT/SGPT (U/L),Troponin (ng/mL),Total bilirubin (µmol/L),ESR (mm/hr),AST/SGOT (U/L),D-dimer (mg/L),Urea (BUN) (mmol/L),Ferritin (ng/mL),Lactate (mmol/L),IL-6 (pg/mL)

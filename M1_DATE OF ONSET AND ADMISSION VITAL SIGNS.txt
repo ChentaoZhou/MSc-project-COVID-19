@@ -1,0 +1,2 @@
+Symptom onset,Admission date at this facility,Temperature,Heart rate,Respiratory rate,BP(systolic),BP(diastolic),Severe dehydration,Sternal capillary refill time >2seconds,Oxygen saturation,place,Glasgow Coma Score,Malnutrition,Mid-upper arm circumference,Height,Weight
+15/03/2020,17/03/2020,38.9,109,11,120,080,No,Yes,090,room air,09,No,385,180,080

@@ -48,8 +48,10 @@ public class ExtractPdf {
 	}
 	/**
 	 * Take out the data from m1_basicInfo table and change to CSV string.
+	 * List<String> mbasicInfo = lines.subList(0, 11);
 	 * */
-	public static String m1_basicInfo(List<String> m1_basicinfo) {
+	public static String m1_basicInfo(List<String> lines) {
+		List<String> m1_basicinfo = lines.subList(0, 11);
 		ArrayList<String> temp = new ArrayList<String>();
 		// operation for first line
 		String line0 = m1_basicinfo.get(0);
@@ -72,12 +74,13 @@ public class ExtractPdf {
 	}
 	/**
 	 * Take out the data from m1_CLINICAL INCLUSION CRITERIA table and change to CSV string.
+	 * List<String> m1Clinical = lines.subList(12, 17);
 	 * */
-	public static String m1_Clinical(List<String> m) {
+	public static String m1_Clinical(List<String> lines) {
+		List<String> m = lines.subList(12, 17);
 		ArrayList<String> temp = new ArrayList<String>();
 		for(String line:m) {
 			line = line.replace("≥ 38oC","").replace("(shortness of breath) OR Tachypnoea*", "").replaceAll("[a-zA-Z|]", "").replace("-", "").replace(" ", "");
-			System.out.println(line);
 			if(line.charAt(0) == '×') {
 				line = "Yes";
 			}else {line = "No";}
@@ -87,8 +90,10 @@ public class ExtractPdf {
 	}
 	/**
 	 * Take out the data from m1_DEMOGRAPHICS table and change to CSV string.
+	 * List<String> m1Demographics = lines.subList(20, 24);
 	 * */
-	public static String m1_Demographics(List<String> m) {
+	public static String m1_Demographics(List<String> lines) {
+		List<String> m = lines.subList(20, 24);
 		ArrayList<String> temp = new ArrayList<String>();
 		String line00 = m.get(0).substring(0,45);
 		line00 = line00.replaceAll("[a-zA-Z\\s+]", "");
@@ -130,8 +135,10 @@ public class ExtractPdf {
 	}
 	/**
 	 * Take out the data from m1_Vitalsigns table and change to CSV string.
+	 * List<String> m1Vitalsigns = lines.subList(26, 35);
 	 * **/
-	public static String m1_Vitalsigns(List<String> m) {
+	public static String m1_Vitalsigns(List<String> lines) {
+		List<String> m = lines.subList(26, 35);
 		ArrayList<String> temp = new ArrayList<String>();
 		String line0 = m.get(0);
 		line0 = line0.replaceAll("[a-zA-Z\\s+\\[\\]\\_()]", "").substring(1);
@@ -193,7 +200,10 @@ public class ExtractPdf {
 	 * List<String> m = lines.subList(38, 48);
 		m.remove(1);
 	 * */
-	public static String m1_CoMorbidities(List<String> m) {
+	public static String m1_CoMorbidities(List<String> lines) {
+		List<String> m = lines.subList(38, 48);
+		m.remove(1);
+	
 		ArrayList<String> temp = new ArrayList<String>();
 		List<String> n = new ArrayList<String>();
 		n.add(m.get(0).replaceAll("[a-zA-Z\\s+()]", ""));n.add(m.get(1).replaceAll("[a-zA-Z\\s+]", ""));
@@ -227,7 +237,9 @@ public class ExtractPdf {
 	 * Take out the data from target table and change to CSV string.
 	 * List<String> m = lines.subList(55, 58);
 	 * */
-	public static String m1_ChronicMedication(List<String> m) {
+	public static String m1_ChronicMedication(List<String> lines) {
+		List<String> m = lines.subList(55, 58);
+	
 		ArrayList<String> temp = new ArrayList<String>();
 		for(String s:m) {
 			s= s.replaceAll("[a-zA-Z\\s+()?-]", "");
@@ -243,7 +255,9 @@ public class ExtractPdf {
 	 * Take out the data from target table and change to CSV string.
 	 * List<String> m = lines.subList(64, 81);
 	 * */
-	public static String m1_SymptomsAD(List<String> m) {
+	public static String m1_SymptomsAD(List<String> lines) {
+		List<String> m = lines.subList(64, 81);
+		
 		ArrayList<String> temp = new ArrayList<String>();
 		List<String> n = m.subList(0, 11);
 		//extract first 11 lines from this table [0-10]
@@ -283,23 +297,50 @@ public class ExtractPdf {
 	}
 	
 	
+	/**
+	 * A method used to return all the info in the M1_module by 
+	 * calling all the method above.
+	 * from Beginning -----to -----SymptomsAD in this PDF
+	 * **/
+	public static String m1_overall(List<String> lines) {
+		String result ="";
+		List<String> input = new ArrayList<String>(lines);
+		//take all the data out and store them in the String
+		String m1basicinfo = ExtractPdf.m1_basicInfo(lines);
+		String m1Clinical = ExtractPdf.m1_Clinical(lines);
+		String m1Demographics = ExtractPdf.m1_Demographics(lines);
+		String m1Vitalsigns = ExtractPdf.m1_Vitalsigns(lines);
+		String m1CoMorbidities = ExtractPdf.m1_CoMorbidities(lines);
+		//here I need to use a new list "input" to do this job, because the m1_CoMorbidities(lines)
+		//will change the order of someplace and cause problem.
+		String m1ChronicMedication = ExtractPdf.m1_ChronicMedication(input);
+		String m1SymptomsAD = ExtractPdf.m1_SymptomsAD(input);
+		
+		//add all the result string together;
+		result = m1basicinfo+","+m1Clinical+","+m1Demographics+","+m1Vitalsigns+","+m1CoMorbidities+","+m1ChronicMedication+","+m1SymptomsAD;
+		
+		return result;
+		
+	}
+	
+	
 	public static void main(String[] args) throws IOException {
 		ArrayList<String> lines = extractPdf("ISARIC_M1.pdf");
-//		for(int i=0;i<lines.size();i++) {
-//			System.out.println("line"+i+": "+lines.get(i));
-//		}
-		List<String> m = lines.subList(64, 81);
-		List<String> n = m.subList(0, 11);
-		List<String> rest = new ArrayList<>();
-		rest.add(m.get(11));rest.add(m.get(13));rest.add(m.get(15));
-//		for(int i=0;i<m.size();i++) {
-//			System.out.println("line"+i+": "+ m.get(i));
-//		}
-		String line161 = m.get(16).replace("Other Yes   No   ×Unk  If yes, specify:", "");
+		for(int i=0;i<lines.size();i++) {
+			System.out.println("line"+i+": "+lines.get(i));
+		}
+		//List<String> m1SymptomsAD = lines.subList(64, 81);
+		//List<String> m1basicInfo = lines.subList(0, 11);
+		//List<String> m1Clinical = lines.subList(12, 17);
+		//List<String> m1Demographics = lines.subList(20, 24);
+		//List<String> m1Vitalsigns = lines.subList(26, 35);
 		
 		
-		String stuff = m1_SymptomsAD(m);
-		String path = "E:\\test\\M1_SIGNS AND SYMPTOMS ON ADMISSION.txt";
+		
+		
+		String stuff = ExtractPdf.m1_overall(lines);
+		System.out.println(stuff);
+		String path = "E:\\test\\overall.txt";
 		FileTool.writeUpdate(path, stuff);
 		
 		

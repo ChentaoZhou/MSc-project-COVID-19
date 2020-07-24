@@ -1,0 +1,1 @@
+ICU or High Dependency Unit admission?,Oxygen therapy?,O2 flow,Source of oxygen,Interface,Non-invasive ventilation?,Invasive ventilation (Any)?,Inotropes/vasopressors?,Extracorporeal (ECMO) support?,Prone position?

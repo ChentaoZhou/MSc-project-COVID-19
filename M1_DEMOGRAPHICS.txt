@@ -1,0 +1,1 @@
+Sex at Birth,Date of birth,Age,Healthcare Worker?,Laboratory Worker?,Pregnant?,If yes: Gestational weeks assessment

@@ -1,0 +1,5 @@
+Proven or suspected infection with pathogen of Public Health Interest,One or more   | A history of self-reported feverishness or measured fever of ≥ 38oC,of these | Cough,during this | Dyspnoea (shortness of breath) OR Tachypnoea*,illness | Clinical suspicion of ARI despite not meeting criteria above
+Yes,Yes,Yes,Yes,No
+Yes,Yes,Yes,Yes,No
+Yes,Yes,Yes,Yes,No
+Yes,Yes,Yes,Yes,No

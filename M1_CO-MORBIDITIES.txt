@@ -1,0 +1,4 @@
+Chronic cardiac disease (not hypertension),Diabetes,Hypertension,Current smoking,Chronic pulmonary disease,Tuberculosis,Asthma,Asplenia,Chronic kidney disease,Malignant neoplasm,Chronic liver disease,Other,Chronic neurological disorder,If yes specify,HIV
+15/03/2020,17/03/2020,38.9,109,11,120,080,No,Yes,090,room air,09,No,385,180,080
+15/03/2020,17/03/2020,38.9,109,11,120,080,No,Yes,090,room air,09,No,385,180,080
+15/03/2020,17/03/2020,38.9,109,11,120,080,No,Yes,090,room air,09,No,385,180,080
