@@ -7,7 +7,7 @@ import java.util.Random;
  * This class is used to generate random basic information 
  * for each case. Including: ID, site, country,date
  * **/
-public class BasicInfoGenerater {
+public class BasicInfoGenerator {
 	/**
 	 * The final method to call sub-methods and combine 
 	 * return values together.
