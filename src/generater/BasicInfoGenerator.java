@@ -35,18 +35,11 @@ public class BasicInfoGenerator {
         return str.toString();
     } 
     
-    /**
-     * method used to generate random number in given range
-     * **/
-    public static int randInt(int min, int max) {
-        Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-        return randomNum;
-    }
+   
     /** generate random date **/
     public static String generateDate() {
-    	int day = randInt(1,31);
-    	int month = randInt(1,9);
+    	int day = Tool.randInt(1,31);
+    	int month = Tool.randInt(1,9);
     	String res = day+"/"+month+"/"+"2020";
     	return res;
     }
