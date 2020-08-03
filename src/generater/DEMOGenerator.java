@@ -1,6 +1,10 @@
 package generater;
 
 public class DEMOGenerator {
+	/**
+	 * 对病人的性别和之后的是否怀孕，以及怀孕周数做了合理的随机算法
+	 * 
+	 * **/
 	public static String getDEMO() {
 		StringBuilder res = new StringBuilder();
 		String gender = getSex();
