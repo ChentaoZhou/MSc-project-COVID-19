@@ -88,7 +88,7 @@ public class ExtractController implements ActionListener{
 		if(e.getSource() == view.getCMButton()) {
 			try {
 				ArrayList<String> lines = ExtractPdf.extractPdf("ISARIC_M1.pdf");
-				String stuff = ExtractPdf.m1_Vitalsigns(lines);
+				String stuff = ExtractPdf.m1_CoMorbidities(lines);
 				String path = "M1_CO-MORBIDITIES.txt";
 				FileTool.writeUpdate(path, stuff);
 				JOptionPane.showMessageDialog(null, "Please go to the specified location to view", "Extract successful", JOptionPane.DEFAULT_OPTION); 
