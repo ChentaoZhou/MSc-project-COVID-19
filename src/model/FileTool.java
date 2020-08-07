@@ -26,4 +26,20 @@ public class FileTool {
 			}
 		}
 	}
+	public static void writeUpdate(File file, String stuff) {
+		FileWriter fw = null;
+		 try {
+			fw = new FileWriter(file,true);
+			fw.write("\n"+stuff);
+		} catch (IOException e) {
+			System.err.println("!!!Unable to update file "+ file);
+			e.printStackTrace();
+		}finally {
+			try {
+				fw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

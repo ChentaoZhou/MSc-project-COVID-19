@@ -134,6 +134,7 @@ public class GeneratPage {
 		store.setFont(new Font("Century Gothic", Font.BOLD, 17));
 		store.setBounds(635, 470, 175, 46);
 		store.addActionListener(controller);
+		store.setEnabled(false);
 		frmDataGenerator.getContentPane().add(store);
 		
 		scrollPane = new JScrollPane();
