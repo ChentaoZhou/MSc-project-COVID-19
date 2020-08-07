@@ -19,6 +19,11 @@ public class GeneratPage {
 	private JPanel content;
 	private JButton basicInfo,demographics,cic,vitalSigns,coMoribidities,chronicMedication,signsSymptoms,overall,store;
 	private GeneratorController controller;
+	private JScrollPane scrollPane;
+
+	public JScrollPane getScrollPane() {
+		return this.scrollPane;
+	}
 
 	public JFrame getFrmDataGenerator() {return this.frmDataGenerator;}
 	
@@ -131,7 +136,7 @@ public class GeneratPage {
 		store.addActionListener(controller);
 		frmDataGenerator.getContentPane().add(store);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		content = new JPanel();
 		content.setLayout(new GridLayout(0,1));
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

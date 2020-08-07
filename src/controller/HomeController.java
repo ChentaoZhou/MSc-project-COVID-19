@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import view.ExtractPage;
+import view.GeneratPage;
 import view.HomePage;
 
 public class HomeController implements ActionListener{
@@ -21,7 +22,9 @@ public class HomeController implements ActionListener{
 		}
 		
 		if(e.getSource() == view.getCreateButton()) {
-			
+			view.getFrame().dispose();
+			GeneratPage gc = new GeneratPage();
+			gc.getFrmDataGenerator().setVisible(true);
 		}
 		
 	}
