@@ -9,7 +9,25 @@ import java.util.Random;
  * **/
 public class BasicInfoGenerator {
 	/**
-	 * The final method to call sub-methods and combine 
+	 * the final method
+	 * @param n is the generate numbers.
+	 * **/
+	public static String generateData(int n) {
+		String result = "";
+		for(int i=0;i<n;i++) {
+			result = result+ getBasicInfo()+"\n";
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * The big method to call sub-methods and combine 
 	 * return values together.
 	 * @return String(Basic Info)
 	 * **/
@@ -45,6 +63,6 @@ public class BasicInfoGenerator {
     }
     
     public static void main(String[] args) {
-    	System.out.println(getBasicInfo() );
+    	System.out.println(generateData(10) );
     }
 }
