@@ -5,7 +5,7 @@ public class DEMOGenerator {
 	 * 对病人的性别和之后的是否怀孕，以及怀孕周数做了合理的随机算法
 	 * 
 	 * **/
-	public static String getDEMO() {
+	public static String generateData() {
 		StringBuilder res = new StringBuilder();
 		String gender = getSex();
 		res.append(gender);res.append(",");
@@ -58,6 +58,6 @@ public class DEMOGenerator {
 
 	
 	public static void main(String[] args) {
-		System.out.println(getDEMO() );
+		System.out.println(generateData() );
 	}
 }

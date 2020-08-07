@@ -1,7 +1,7 @@
 package generater;
 
 public class COMorbiditiesGenerator {
-	public static String getCOM() {
+	public static String generateData() {
 		StringBuilder res = new StringBuilder();
 		int prob = (int) (Math.random()*100);
 		if(prob>=30) res.append("No"+",");
@@ -62,8 +62,8 @@ public class COMorbiditiesGenerator {
 		
 		return res.toString();
 	}
-	public static void main(String[] args) {
-		System.out.println(getCOM());
-	}
+//	public static void main(String[] args) {
+//		System.out.println(getCOM());
+//	}
 	
 }

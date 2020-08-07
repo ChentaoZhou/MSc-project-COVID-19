@@ -1,7 +1,7 @@
 package generater;
 
 public class PreCMGenerator {
-	public static String getPCM() {
+	public static String generateData() {
 		int prob = (int) (Math.random()*100);
 		StringBuilder res = new StringBuilder();
 		if(prob>50) res.append("Yes"+",");
@@ -19,7 +19,7 @@ public class PreCMGenerator {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getPCM());
+		System.out.println(generateData());
 	}
 	
 }

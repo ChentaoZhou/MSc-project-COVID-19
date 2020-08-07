@@ -8,30 +8,13 @@ import java.util.Random;
  * for each case. Including: ID, site, country,date
  * **/
 public class BasicInfoGenerator {
-	/**
-	 * the final method
-	 * @param n is the generate numbers.
-	 * **/
-	public static String generateData(int n) {
-		String result = "";
-		for(int i=0;i<n;i++) {
-			result = result+ getBasicInfo()+"\n";
-		}
-		return result;
-	}
-	
-	
-	
-	
-	
-	
 	
 	/**
 	 * The big method to call sub-methods and combine 
 	 * return values together.
 	 * @return String(Basic Info)
 	 * **/
-	public static String getBasicInfo() {
+	public static String generateData() {
 		StringBuilder res = new StringBuilder();
 		res.append(generateID(9));
 		res.append(",");
@@ -63,6 +46,6 @@ public class BasicInfoGenerator {
     }
     
     public static void main(String[] args) {
-    	System.out.println(generateData(10) );
+    	System.out.println(generateData() );
     }
 }

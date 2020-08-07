@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class SignAndSymGenerator {
 	
-	public static String getSignSymptoms() {
+	public static String generateData() {
 		double prob = Tool.randDouble();
 		StringBuilder res = new StringBuilder();
 		//Fever
@@ -129,6 +129,6 @@ public class SignAndSymGenerator {
 	
 	public static void main(String[] args) {
 
-		System.out.println(getSignSymptoms());
+		System.out.println(generateData());
 	}
 }
