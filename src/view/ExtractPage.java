@@ -18,6 +18,11 @@ import java.io.File;
 import javax.swing.JButton;
 import java.awt.Color;
 
+/**
+ * The GUI for extracting data from PDF,contains 8 major buttons for different section and all of them
+ * There is a small window for user to watch the extracted result.
+ * After the extraction process, the extracted data will be stored in the specialized file which is selected by user.
+ * */
 public class ExtractPage  {
 
 	private JButton BFButton,CICButton,DAVSButton,CMButton,PACMButton,SSAButton,overallButton,backButton,DMButton;
@@ -181,9 +186,6 @@ public class ExtractPage  {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(30, 356, 577, 85);
 		frmExtractingDataFrom.getContentPane().add(scrollPane);
-		
-		
-		JPanel panel = new JPanel();
 		scrollPane.setViewportView(content);
 	}
 	public void success() {

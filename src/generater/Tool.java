@@ -12,7 +12,11 @@ public class Tool {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
     }
-    
+    /**
+     * method used to generate a random double number with 2 Integer and 1 decimal
+     * such as 78.6
+     * The number of digits is the same as the data distribution results on the official website(for the random algorithm)
+     * */
     public static double randDouble() {
     	Random r = new Random();
 		double a = r.nextDouble();

@@ -6,7 +6,7 @@ import java.io.IOException;
 public class FileTool {
 	/**
 	 * This method update the file by adding a line in the next line of its content. 
-	 * @param fileName: The path of the file.
+	 * @param fileName: The String type path of the file.
 	 * @param stuff: The String to be add into the file.
 	 **/
 	public static void writeUpdate(String fileName, String stuff) {
@@ -26,6 +26,11 @@ public class FileTool {
 			}
 		}
 	}
+	/**
+	 * This method update the file by adding a line in the next line of its content. 
+	 * @param fileName: The File type path of the file.
+	 * @param stuff: The String to be add into the file.
+	 **/
 	public static void writeUpdate(File file, String stuff) {
 		FileWriter fw = null;
 		 try {
