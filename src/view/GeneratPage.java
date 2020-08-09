@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 /**
  * The GUI for generating random data, contains nine buttons (7 for partial generating, 1 for whole generating, 1 for store these data)
  * There is a big view window for user to view the generated data.
+ * User can choose which section they want to generate and the generated data will be shown in the window, after that, user can store these data
+ * in local files.
  * **/
 public class GeneratPage {
 
@@ -31,7 +33,6 @@ public class GeneratPage {
 	 * Getters for this class
 	 * **/
 	public JScrollPane getScrollPane() {return this.scrollPane;}
-	
 	public JFrame getFrmDataGenerator() {return this.frmDataGenerator;}
 	public JPanel getContent() {return this.content;}
 	public JButton getBasicInfo() {return this.basicInfo;}
@@ -140,9 +141,6 @@ public class GeneratPage {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(21, 25, 853, 323);
 		frmDataGenerator.getContentPane().add(scrollPane);
-		
-		
-		JPanel panel = new JPanel();
 		scrollPane.setViewportView(content);
 		
 		defaultLabel = new JLabel("Select a section to generate and Generated Data will be shown here : ");

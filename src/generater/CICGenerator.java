@@ -3,8 +3,8 @@ package generater;
 public class CICGenerator {
 	
 	/**
-	 * method to generate random data for CLINICAL INCLUSION CRITERIA
-	 * 具体随机算法生产的数据根据已得到的统计数据合理生成
+	 * method to generate random data for CLINICAL INCLUSION CRITERIA section
+	 * The data produced by the specific random algorithm is reasonably generated according to the obtained statistical data
 	 * **/
 	public static String generateData() {
 		StringBuilder res = new StringBuilder();

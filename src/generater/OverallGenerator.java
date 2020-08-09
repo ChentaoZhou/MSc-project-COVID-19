@@ -3,6 +3,9 @@ package generater;
 import model.FileTool;
 
 public class OverallGenerator {
+	/**
+	 * Aggregate all the random generation algorithms to get all the randomly generated information for a patient
+	 * **/
 	public static String generateDate() {
 		String result="";
 		result+= BasicInfoGenerator.generateData()+","+CICGenerator.generateData()+","+DEMOGenerator.generateData()+","

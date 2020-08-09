@@ -4,7 +4,10 @@ import java.text.NumberFormat;
 import java.util.Random;
 
 public class SignAndSymGenerator {
-	
+	/**
+	 * The random data generating algorithm for Signs and Symptoms on Admission section
+	 * All randomly generated data is based on official statistical data distribution
+	 * **/
 	public static String generateData() {
 		double prob = Tool.randDouble();
 		StringBuilder res = new StringBuilder();

@@ -2,8 +2,11 @@ package generater;
 
 public class DateOnsetAndSignsGenerator {
 	
-	//生成M1 Date of onset and adminssion vital signs 的方法
-	//其中getArmWeightHeight()方法对case的BMI进行了合理的随机生成
+	/**
+	 * The random data generating algorithm for Date of Onset and Admission Vital Signs section
+	 * The data produced by the specific random algorithm is reasonably generated according to the obtained statistical data 
+	 * the getArmWeightHeight() method generate the random BMI for each person in a reasonable way.
+	 **/
 	public static String generateData() {
 		StringBuilder res = new StringBuilder();
 		int day = Tool.randInt(1, 25);

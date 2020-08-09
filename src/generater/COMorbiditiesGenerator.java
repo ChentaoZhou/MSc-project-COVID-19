@@ -1,6 +1,10 @@
 package generater;
 
 public class COMorbiditiesGenerator {
+	/**
+	 * The random data generating algorithm for CO-Morbidities section
+	 * The data produced by the specific random algorithm is reasonably generated according to the obtained statistical data 
+	 **/
 	public static String generateData() {
 		StringBuilder res = new StringBuilder();
 		int prob = (int) (Math.random()*100);

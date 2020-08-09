@@ -19,6 +19,10 @@ import model.FileTool;
 import view.GeneratPage;
 import view.HomePage;
 
+/**
+ * This class is used to control the responding of GeneratPage, when user click any buttons on the GeneratPage,
+ * some reaction will happen here.
+ * **/
 public class GeneratorController implements ActionListener{
 	private GeneratPage view;
 	String result;
@@ -38,6 +42,7 @@ public class GeneratorController implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//back button
 		if(e.getSource() == view.getBack()) {
 			view.getFrmDataGenerator().dispose();
 			HomePage hp = new HomePage();
@@ -175,6 +180,7 @@ public class GeneratorController implements ActionListener{
 			muteAll();
 			view.getStore().setEnabled(true);
 		}
+		//the store button
 		if(e.getSource() == view.getStore()) {
 			JFileChooser fileChooser = new JFileChooser();
 			int res = fileChooser.showSaveDialog(fileChooser);

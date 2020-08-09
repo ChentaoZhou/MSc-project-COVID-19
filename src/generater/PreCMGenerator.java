@@ -1,6 +1,9 @@
 package generater;
 
 public class PreCMGenerator {
+	/**
+	 * The random data generating algorithm for Pre-Admission & Chronic medication section
+	 * **/
 	public static String generateData() {
 		int prob = (int) (Math.random()*100);
 		StringBuilder res = new StringBuilder();

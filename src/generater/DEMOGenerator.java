@@ -2,8 +2,9 @@ package generater;
 
 public class DEMOGenerator {
 	/**
-	 * 对病人的性别和之后的是否怀孕，以及怀孕周数做了合理的随机算法
-	 * 
+	 * The random data generating algorithm for Demographics section
+	 * The gender, pregnancy and pregnancy cycle of the patient were calculated by the algorithm in a reasonable way
+	 * (Men don't get pregnant, and patients who aren't pregnant don't have pregnancy cycles)   
 	 * **/
 	public static String generateData() {
 		StringBuilder res = new StringBuilder();

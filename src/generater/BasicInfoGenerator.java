@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Random;
 
 /**
- * This class is used to generate random basic information 
+ * This class is used to generate random basic information section
  * for each case. Including: ID, site, country,date
  * **/
 public class BasicInfoGenerator {
