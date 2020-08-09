@@ -5,10 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import controller.ExtractController;
 
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.io.File;
+
 import javax.swing.JButton;
 import java.awt.Color;
 
@@ -16,7 +22,24 @@ public class ExtractPage  {
 
 	private JButton BFButton,CICButton,DAVSButton,CMButton,PACMButton,SSAButton,overallButton,backButton,DMButton;
 	private JFrame frame;
+	private JPanel content;
 	private ExtractController controller;
+	public File file;
+	private JScrollPane scrollPane;
+	private JLabel resultLabel;
+	
+	
+	public JLabel getResultLabel() {return this.resultLabel;}
+	public JPanel getContent() {return this.content;}
+	public void setResultLabel(JLabel resultLabel) {this.resultLabel = resultLabel;}
+
+
+	public JScrollPane getScrollPane() {return this.scrollPane;}
+	
+	public ExtractPage(File file) {
+		this.file = file;
+		initialize();
+	}
 	/** Getters */
 	public JButton getBFButton() {
 		return this.BFButton;
@@ -75,7 +98,7 @@ public class ExtractPage  {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		controller = new ExtractController(this);
+		controller = new ExtractController(this, file);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 830, 511);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,25 +130,25 @@ public class ExtractPage  {
 
 		CMButton = new JButton("Co-Morbidities");
 		CMButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		CMButton.setBounds(30, 333, 363, 54);
+		CMButton.setBounds(420, 74, 363, 54);
 		CMButton.addActionListener(controller);
 		frame.getContentPane().add(CMButton);
 
 		PACMButton = new JButton("Pre-Admission & Chronic Medication");
 		PACMButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		PACMButton.setBounds(30, 397, 363, 54);
+		PACMButton.setBounds(420, 138, 363, 54);
 		PACMButton.addActionListener(controller);
 		frame.getContentPane().add(PACMButton);
 
 		SSAButton = new JButton("Signs and Symptoms on Admission");
 		SSAButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		SSAButton.setBounds(420, 74, 363, 54);
+		SSAButton.setBounds(420, 205, 363, 54);
 		SSAButton.addActionListener(controller);
 		frame.getContentPane().add(SSAButton);
 
 		overallButton = new JButton("OVERALL");
 		overallButton.setFont(new Font("Century Gothic", Font.BOLD, 18));
-		overallButton.setBounds(434, 228, 334, 53);
+		overallButton.setBounds(420, 269, 363, 53);
 		overallButton.addActionListener(controller);
 		frame.getContentPane().add(overallButton);
 		
@@ -138,7 +161,7 @@ public class ExtractPage  {
 		JLabel lblChooseASection = new JLabel("<html>Choose a section to extract<br>or the whole PDF</html>");
 		lblChooseASection.setForeground(Color.GRAY);
 		lblChooseASection.setFont(new Font("Eras Light ITC", Font.BOLD, 20));
-		lblChooseASection.setBounds(468, 138, 273, 80);
+		lblChooseASection.setBounds(409, 10, 405, 54);
 		frame.getContentPane().add(lblChooseASection);
 		
 		DMButton = new JButton("Demographics");
@@ -146,6 +169,19 @@ public class ExtractPage  {
 		DMButton.setBounds(30, 138, 363, 54);
 		DMButton.addActionListener(controller);
 		frame.getContentPane().add(DMButton);
+		
+		resultLabel = new JLabel();
+		scrollPane = new JScrollPane();
+		content = new JPanel();
+		content.setLayout(new GridLayout(0,1));
+		content.add(resultLabel);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(30, 356, 577, 85);
+		frame.getContentPane().add(scrollPane);
+		
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(content);
 	}
 	public void success() {
 		JOptionPane.showInternalMessageDialog(null, "All done","extract sucess!", JOptionPane.INFORMATION_MESSAGE); 

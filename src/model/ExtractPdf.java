@@ -17,13 +17,13 @@ public class ExtractPdf {
 	 * @param file name
 	 * @return String[]
 	 * **/
-	public static ArrayList<String> extractPdf(String file) throws IOException {
+	public static ArrayList<String> extractPdf(File file) throws IOException {
 		ArrayList<String> result = new ArrayList<String>();
 		PDFTextStripper tStripper = new PDFTextStripper();
 		tStripper.setStartPage(2);		//the target pages
 		tStripper.setEndPage(7);
 		String[] lines = null;
-		PDDocument document = PDDocument.load(new File(file));
+		PDDocument document = PDDocument.load(file);
 		document.getClass();
 		if (!document.isEncrypted()) {
 			String pdfFileInText = tStripper.getText(document);		// pdfFileInText contains all the data of PDF

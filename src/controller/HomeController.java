@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.JFileChooser;
 
 import view.ExtractPage;
 import view.GeneratPage;
@@ -17,7 +20,10 @@ public class HomeController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == view.getExtractButton()) {
 			view.getFrame().dispose();
-			ExtractPage ep = new ExtractPage();
+			JFileChooser fileChooser = new JFileChooser();
+			int res = fileChooser.showSaveDialog(fileChooser);
+			File file = fileChooser.getSelectedFile();
+			ExtractPage ep = new ExtractPage(file);
 			ep.getFrame().setVisible(true);
 		}
 		

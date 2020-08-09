@@ -22,6 +22,7 @@ import generater.PreCMGenerator;
 import generater.SignAndSymGenerator;
 import model.FileTool;
 import view.GeneratPage;
+import view.HomePage;
 
 public class GeneratorController implements ActionListener{
 	private GeneratPage view;
@@ -42,6 +43,11 @@ public class GeneratorController implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == view.getBack()) {
+			view.getFrmDataGenerator().dispose();
+			HomePage hp = new HomePage();
+			hp.getFrame().setVisible(true);
+		}
 		//basic info part
 		if(e.getSource() == view.getBasicInfo()) {
 			result="";
