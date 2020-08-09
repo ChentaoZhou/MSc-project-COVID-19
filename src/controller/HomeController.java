@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import view.ExtractPage;
 import view.GeneratPage;
@@ -23,14 +24,24 @@ public class HomeController implements ActionListener{
 			JFileChooser fileChooser = new JFileChooser();
 			int res = fileChooser.showSaveDialog(fileChooser);
 			File file = fileChooser.getSelectedFile();
-			ExtractPage ep = new ExtractPage(file);
-			ep.getFrame().setVisible(true);
+			//if user do not choose a file, the program need to handle this.
+			if(file!=null) {
+				ExtractPage ep = new ExtractPage(file);
+				ep.getFrame().setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(null, "No file choosen, program exits automatically","Wrong operation",JOptionPane.ERROR_MESSAGE);
+			}
 		}
 		
 		if(e.getSource() == view.getCreateButton()) {
 			view.getFrame().dispose();
 			GeneratPage gc = new GeneratPage();
 			gc.getFrmDataGenerator().setVisible(true);
+		}
+		
+		//exit the program
+		if(e.getSource() == view.getExit()) {
+			view.getFrame().dispose();
 		}
 		
 	}

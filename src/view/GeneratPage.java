@@ -12,6 +12,7 @@ import controller.GeneratorController;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.JLabel;
 
 /**
  * The GUI for generating random data, contains nine buttons (7 for partial generating, 1 for whole generating, 1 for store these data)
@@ -24,6 +25,7 @@ public class GeneratPage {
 	private JButton back,basicInfo,demographics,cic,vitalSigns,coMoribidities,chronicMedication,signsSymptoms,overall,store;
 	private GeneratorController controller;
 	private JScrollPane scrollPane;
+	private JLabel defaultLabel;
 
 	/**
 	 * Getters for this class
@@ -142,6 +144,10 @@ public class GeneratPage {
 		
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(content);
+		
+		defaultLabel = new JLabel("Select a section to generate and Generated Data will be shown here : ");
+		defaultLabel.setFont(new Font("Century Gothic", Font.PLAIN, 20));
+		content.add(defaultLabel);
 		
 		back = new JButton("BACK");
 		back.setFont(new Font("Century Gothic", Font.ITALIC, 17));

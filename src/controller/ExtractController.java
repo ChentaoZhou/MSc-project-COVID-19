@@ -48,13 +48,18 @@ public class ExtractController implements ActionListener{
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
 				
-				FileTool.writeUpdate(path, stuff);			//write the data into the file
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				JOptionPane.showMessageDialog(null, "Please go to the specified location to view", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getOverallButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getOverallButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -68,14 +73,19 @@ public class ExtractController implements ActionListener{
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
 				
-				FileTool.writeUpdate(path, stuff);
 				
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getBFButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getBFButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -88,15 +98,19 @@ public class ExtractController implements ActionListener{
 				JFileChooser fileChooser = new JFileChooser();
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
-				FileTool.writeUpdate(path, stuff);
 				
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				
-				JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getDMButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getDMButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -109,15 +123,19 @@ public class ExtractController implements ActionListener{
 				JFileChooser fileChooser = new JFileChooser();
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
-				FileTool.writeUpdate(path, stuff);
 				
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				
-				JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getCICButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getCICButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -130,15 +148,19 @@ public class ExtractController implements ActionListener{
 				JFileChooser fileChooser = new JFileChooser();
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
-				FileTool.writeUpdate(path, stuff);
 				
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				
-				JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getDAVSButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getDAVSButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -151,15 +173,19 @@ public class ExtractController implements ActionListener{
 				JFileChooser fileChooser = new JFileChooser();
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
-				FileTool.writeUpdate(path, stuff);
 				
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				
-				JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getCMButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getCMButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -172,15 +198,19 @@ public class ExtractController implements ActionListener{
 				JFileChooser fileChooser = new JFileChooser();
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
-				FileTool.writeUpdate(path, stuff);
 				
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				
-				JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getPACMButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getPACMButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -193,15 +223,19 @@ public class ExtractController implements ActionListener{
 				JFileChooser fileChooser = new JFileChooser();
 				int res = fileChooser.showSaveDialog(fileChooser);
 				File path = fileChooser.getSelectedFile();
-				FileTool.writeUpdate(path, stuff);
 				
-				//update the extracted data in the GUI
-				JLabel result = new JLabel(stuff);
-				view.getContent().add(result);
-				view.getScrollPane().setViewportView(view.getContent());
-				
-				JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.DEFAULT_OPTION); 
-				view.getSSAButton().setEnabled(false);
+				//if the user do not choose a file, program should handle this.
+				if(path!=null) {
+					FileTool.writeUpdate(path, stuff);			//write the data into the file
+					//update the extracted data in the GUI
+					JLabel result = new JLabel(stuff);
+					view.getContent().add(result);
+					view.getScrollPane().setViewportView(view.getContent());
+					JOptionPane.showMessageDialog(null, "Extracted data have been stored !", "Extract successful", JOptionPane.PLAIN_MESSAGE); 
+					view.getSSAButton().setEnabled(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "No file choosen, please try again","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

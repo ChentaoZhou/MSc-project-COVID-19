@@ -1,9 +1,4 @@
 package controller;
-//还需要最后写入进文件的代码
-
-
-
-
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,7 +46,7 @@ public class GeneratorController implements ActionListener{
 		//basic info part
 		if(e.getSource() == view.getBasicInfo()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -68,7 +63,7 @@ public class GeneratorController implements ActionListener{
 		//Clinical Inclusion Criteria
 		if(e.getSource() == view.getCic()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -84,7 +79,7 @@ public class GeneratorController implements ActionListener{
 		//Demographics
 		if(e.getSource() == view.getDemographics()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -100,7 +95,7 @@ public class GeneratorController implements ActionListener{
 		//Date of Onset and Admission Vital signs
 		if(e.getSource() == view.getVitalSigns()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -116,7 +111,7 @@ public class GeneratorController implements ActionListener{
 		//Co-Morbidities
 		if(e.getSource() == view.getCoMoribidities()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -132,7 +127,7 @@ public class GeneratorController implements ActionListener{
 		//Pre-Admission & Chronic Medication
 		if(e.getSource() == view.getChronicMedication()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -148,7 +143,7 @@ public class GeneratorController implements ActionListener{
 		//Signs and Symptoms on Admission
 		if(e.getSource() == view.getSignsSymptoms()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -164,7 +159,7 @@ public class GeneratorController implements ActionListener{
 		//overall
 		if(e.getSource() == view.getOverall()) {
 			result="";
-			String input = JOptionPane.showInputDialog("enter an number" );
+			String input = JOptionPane.showInputDialog("Enter the quantity to be produced:" );
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
@@ -184,11 +179,17 @@ public class GeneratorController implements ActionListener{
 			JFileChooser fileChooser = new JFileChooser();
 			int res = fileChooser.showSaveDialog(fileChooser);
 			File file = fileChooser.getSelectedFile();
-			FileTool.writeUpdate(file, result);
-			int input = JOptionPane.showConfirmDialog(null, "Stored OK!");
-			view.getFrmDataGenerator().dispose();
-			GeneratPage gc = new GeneratPage();
-			gc.getFrmDataGenerator().setVisible(true);
+			//if user do not choose a file, the program should handle this
+			if(file!=null) {
+				FileTool.writeUpdate(file, result);
+				JOptionPane.showMessageDialog(null, "Data stored successfully !"); 
+				view.getFrmDataGenerator().dispose();
+				GeneratPage gc = new GeneratPage();
+				gc.getFrmDataGenerator().setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(null, "No file choosen,try again!","Wrong operation",JOptionPane.ERROR_MESSAGE); 
+			}
+		
 		}
 		
 	}
