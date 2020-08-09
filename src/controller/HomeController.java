@@ -20,16 +20,17 @@ public class HomeController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == view.getExtractButton()) {
-			view.getFrame().dispose();
+			
 			JFileChooser fileChooser = new JFileChooser();
 			int res = fileChooser.showSaveDialog(fileChooser);
 			File file = fileChooser.getSelectedFile();
 			//if user do not choose a file, the program need to handle this.
 			if(file!=null) {
+				view.getFrame().dispose();
 				ExtractPage ep = new ExtractPage(file);
 				ep.getFrame().setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "No file choosen, program exits automatically","Wrong operation",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "No file choosen, you need to choose a file","Wrong operation",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
