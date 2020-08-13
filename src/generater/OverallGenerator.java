@@ -6,7 +6,7 @@ public class OverallGenerator {
 	/**
 	 * Aggregate all the random generation algorithms to get all the randomly generated information for a patient
 	 * **/
-	public static String generateDate() {
+	public static String generateData() {
 		String result="";
 		result+= BasicInfoGenerator.generateData()+","+CICGenerator.generateData()+","+DEMOGenerator.generateData()+","
 				  +DateOnsetAndSignsGenerator.generateData()+","+COMorbiditiesGenerator.generateData()+","+PreCMGenerator.generateData()
@@ -16,7 +16,7 @@ public class OverallGenerator {
 	
 	public static void main(String[] args) {
 		for(int i=0;i<100;i++) {
-			String stuff = generateDate();
+			String stuff = generateData();
 			FileTool.writeUpdate("overall.txt", stuff);
 		}
 	}
