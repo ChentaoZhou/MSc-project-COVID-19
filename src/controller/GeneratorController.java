@@ -16,6 +16,7 @@ import generater.DateOnsetAndSignsGenerator;
 import generater.PreCMGenerator;
 import generater.SignAndSymGenerator;
 import model.FileTool;
+import model.Patient;
 import view.GeneratPage;
 import view.HomePage;
 
@@ -26,6 +27,7 @@ import view.HomePage;
 public class GeneratorController implements ActionListener{
 	private GeneratPage view;
 	String result;
+	Patient patient = new Patient(true);
 	public GeneratorController (GeneratPage view) {
 		this.view = view;
 	}
@@ -104,7 +106,7 @@ public class GeneratorController implements ActionListener{
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
-				String s =DateOnsetAndSignsGenerator.generateData();
+				String s =DateOnsetAndSignsGenerator.generateData(patient);
 				result= result+s+"\n";
 				JLabel temp = new JLabel(s);
 				view.getContent().add(temp);
@@ -168,8 +170,9 @@ public class GeneratorController implements ActionListener{
 			System.out.println(input);			
 			int number = Integer.parseInt(input);
 			for(int i=0;i<number;i++) {
-				String s =BasicInfoGenerator.generateData()+","+CICGenerator.generateData()+","+DEMOGenerator.generateData()+","
-						  +DateOnsetAndSignsGenerator.generateData()+","+COMorbiditiesGenerator.generateData()+","+PreCMGenerator.generateData()
+				patient = new Patient();
+				String s =BasicInfoGenerator.generateData()+","+CICGenerator.generateData()+","+DEMOGenerator.generateData(patient)+","
+						  +DateOnsetAndSignsGenerator.generateData(patient)+","+COMorbiditiesGenerator.generateData()+","+PreCMGenerator.generateData()
 						  +","+SignAndSymGenerator.generateData();
 				result= result+s+"\n";
 				JLabel temp = new JLabel(s);

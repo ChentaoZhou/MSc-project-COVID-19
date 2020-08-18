@@ -1,6 +1,7 @@
 package generater;
 
 import model.FileTool;
+import model.Patient;
 
 public class OverallGenerator {
 	/**
@@ -8,8 +9,9 @@ public class OverallGenerator {
 	 * **/
 	public static String generateData() {
 		String result="";
-		result+= BasicInfoGenerator.generateData()+","+CICGenerator.generateData()+","+DEMOGenerator.generateData()+","
-				  +DateOnsetAndSignsGenerator.generateData()+","+COMorbiditiesGenerator.generateData()+","+PreCMGenerator.generateData()
+		Patient p= new Patient();
+		result+= BasicInfoGenerator.generateData()+","+CICGenerator.generateData()+","+DEMOGenerator.generateData(p)+","
+				  +DateOnsetAndSignsGenerator.generateData(p)+","+COMorbiditiesGenerator.generateData()+","+PreCMGenerator.generateData()
 				  +","+SignAndSymGenerator.generateData();
 		return result;
 	}

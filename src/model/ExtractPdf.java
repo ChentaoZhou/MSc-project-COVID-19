@@ -324,26 +324,27 @@ public class ExtractPdf {
 	}
 	
 	
-//	public static void main(String[] args) throws IOException {
-//		ArrayList<String> lines = extractPdf("ISARIC_M1.pdf");
-//		for(int i=0;i<lines.size();i++) {
-//			System.out.println("line"+i+": "+lines.get(i));
-//		}
-//		//List<String> m1SymptomsAD = lines.subList(64, 81);
-//		//List<String> m1basicInfo = lines.subList(0, 11);
-//		//List<String> m1Clinical = lines.subList(12, 17);
-//		//List<String> m1Demographics = lines.subList(20, 24);
-//		//List<String> m1Vitalsigns = lines.subList(26, 35);
-//		
-//		
-//		
-//		
-////		String stuff = ExtractPdf.m1_overall(lines);
-////		System.out.println(stuff);
-////		String path = "E:\\test\\overall.txt";
-////		FileTool.writeUpdate(path, stuff);
-//		
-//		
-//	}
+	public static void main(String[] args) throws IOException {
+		File file = new File("ISARIC_M1.pdf");
+		ArrayList<String> lines = extractPdf(file);
+		for(int i=0;i<lines.size();i++) {
+			System.out.println("line"+i+": "+lines.get(i));
+		}
+		//List<String> m1SymptomsAD = lines.subList(64, 81);
+		//List<String> m1basicInfo = lines.subList(0, 11);
+		//List<String> m1Clinical = lines.subList(12, 17);
+		//List<String> m1Demographics = lines.subList(20, 24);
+		//List<String> m1Vitalsigns = lines.subList(26, 35);
+		
+		
+		
+		
+//		String stuff = ExtractPdf.m1_overall(lines);
+//		System.out.println(stuff);
+//		String path = "E:\\test\\overall.txt";
+//		FileTool.writeUpdate(path, stuff);
+		
+		
+	}
 
 }

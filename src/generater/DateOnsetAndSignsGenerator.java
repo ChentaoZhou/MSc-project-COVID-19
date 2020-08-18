@@ -1,5 +1,7 @@
 package generater;
 
+import model.Patient;
+
 public class DateOnsetAndSignsGenerator {
 	
 	/**
@@ -7,7 +9,7 @@ public class DateOnsetAndSignsGenerator {
 	 * The data produced by the specific random algorithm is reasonably generated according to the obtained statistical data 
 	 * the getArmWeightHeight() method generate the random BMI for each person in a reasonable way.
 	 **/
-	public static String generateData() {
+	public static String generateData(Patient patient) {
 		StringBuilder res = new StringBuilder();
 		int day = Tool.randInt(1, 25);
 		int month = Tool.randInt(1, 8);
@@ -15,7 +17,7 @@ public class DateOnsetAndSignsGenerator {
 		String SymDate = day+"/"+month+"/"+year;
 		res.append(SymDate);res.append(",");			//Symptom onset
 		
-		int day2 = day+5;
+		int day2 = day+Tool.randInt(1, 5);
 		String AdmDate = day2+"/"+month+"/"+year;
 		res.append(AdmDate); res.append(",");			//Admission date at this facility
 		
@@ -60,7 +62,7 @@ public class DateOnsetAndSignsGenerator {
 		if(prob>=80) res.append("Yes"+",");
 		else res.append("No"+",");						//Malnutrition
 		
-		res.append(getArmWeightHeight());					//Height + weight
+		res.append(getArmWeightHeight(patient));					//Height + weight
 		return res.toString();			
 
 	}
@@ -68,41 +70,45 @@ public class DateOnsetAndSignsGenerator {
 	/**
 	 * Generate Mid-upper arm circumference, height and weight in a reasonable way
 	 * **/
-	public static String getArmWeightHeight() {
+	public static String getArmWeightHeight(Patient patient) {
+		if(patient.getAge()<=16) {
+			if(patient.getGender().equals("Male")) {
+				int hight = (int)(6.1*patient.getAge()+72.8);
+				int weight = (int)(3.7*patient.getAge()+4.1);
+				int arm = 4*weight;
+				return arm+","+hight+","+weight;
+			}else {
+				int hight = (int)(5.5*patient.getAge()+74);
+				int weight = (int)(3.27*patient.getAge()+5.38);
+				int arm = 4*weight;
+				return arm+","+hight+","+weight;
+			}
+			
+		}
+		
 		
 		int hight = Tool.randInt(150, 200);
 		//for weight
 		int weight, arm;
-		if(hight<160) {
-			weight = Tool.randInt(42, 60);
-		}
-		else if(hight<170) {
-			weight = Tool.randInt(42, 80);
-			
-		}else if(hight<180) {
-			weight = Tool.randInt(60, 90);
-			
-		}else if(hight<190) {
-			weight = Tool.randInt(62, 105);
-		}
-		else {
-			weight = Tool.randInt(80, 130);
-		}
+		if(hight<160) weight = Tool.randInt(42, 60);
+		else if(hight<170) weight = Tool.randInt(42, 80);	
+		else if(hight<180) weight = Tool.randInt(60, 90);	
+		else if(hight<190) weight = Tool.randInt(62, 105);
+		else weight = Tool.randInt(80, 130);
+	
 		//for arm
-		if(weight<60) {
-			arm = Tool.randInt(170, 250);
-		}else if(weight<80) {
-			arm = Tool.randInt(250, 320);
-		}else if(weight<100) {
-			arm = Tool.randInt(320, 400);
-		}else {
-			arm = Tool.randInt(390, 450);
-		}
+		if(weight<60) arm = Tool.randInt(170, 250);
+		else if(weight<80) arm = Tool.randInt(250, 320);
+		else if(weight<100) arm = Tool.randInt(320, 400);
+		else arm = Tool.randInt(390, 450);
+		
 		
 		return arm+","+hight+","+weight;
 	}
 	
-//	public static void main(String[] args) {
-//		System.out.println (DOAVSGenerator());
-//	}
+	public static void main(String[] args) {
+		Patient p = new Patient();
+		System.out.println(DEMOGenerator.generateData(p));
+		System.out.println (generateData(p));
+	}
 }
