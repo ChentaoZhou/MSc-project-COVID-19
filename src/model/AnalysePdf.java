@@ -11,7 +11,7 @@ import org.bouncycastle.util.Arrays;
 
 import model.FileTool;
 
-public class ExtractPdf {
+public class AnalysePdf {
 	/**
 	 * method used for extract all information from target PDF
 	 * @param file name
@@ -20,7 +20,7 @@ public class ExtractPdf {
 	public static ArrayList<String> extractPdf(File file) throws IOException {
 		ArrayList<String> result = new ArrayList<String>();
 		PDFTextStripper tStripper = new PDFTextStripper();
-		tStripper.setStartPage(2);		//Ignore the introductory text and go straight to the data page
+		tStripper.setStartPage(2);		//the target pages
 		tStripper.setEndPage(7);
 		String[] lines = null;
 		PDDocument document = PDDocument.load(file);
@@ -92,7 +92,7 @@ public class ExtractPdf {
 	 * Take out the data from m1_DEMOGRAPHICS table and change to CSV string.
 	 * List<String> m1Demographics = lines.subList(20, 24);
 	 * */
-	public static String m1_Demographics(List<String> lines) {
+	public static String m1_Demographics(List<String> lines,Patient p) {
 		List<String> m = lines.subList(20, 24);
 		ArrayList<String> temp = new ArrayList<String>();
 		String line00 = m.get(0).substring(0,45);
@@ -101,12 +101,15 @@ public class ExtractPdf {
 		else if(line00.charAt(1)=='×') line00 = "Female";
 		else if(line00.charAt(2)=='×') line00 = "Not specified";
 		temp.add(line00);
+		
 		String line01 = m.get(0).substring(45);
 		line01 = line01.replaceAll("[a-zA-Z\\s+\\[\\]\\_]", "");
 		temp.add(line01);
+		//age
 		String line1 = m.get(1);
 		line1 = line1.replaceAll("[a-zA-Z\\s+\\[\\]\\_,:]", "");
 		temp.add(line1);
+		p.setAge(Integer.parseInt(line1));
 		String line20 = m.get(2).substring(0,39);
 		line20 = line20.replaceAll("[a-zA-Z\\s+?]", "");
 		if(line20.charAt(0)=='×') line20 = "Yes";
@@ -172,16 +175,16 @@ public class ExtractPdf {
 		String line6 = m.get(6);
 		line6 = line6.replaceAll("[a-zA-Z\\s+\\[\\]\\_:()%×]", "");
 		temp.add(line6);
-		String line61 = m.get(6);	//the Oxygen saturation
+		String line61 = m.get(6);
 		line61 = line61.replaceAll("[a-zA-Z\\s+\\[\\]\\_:()%0-9]", "");
 		if(line61.charAt(0)=='×') line61 = "room air";
 		else if(line61.charAt(1)=='×') line61 = "oxygen therapy";
 		else if(line61.charAt(2)=='×') line61 = "Unknown";
 		temp.add(line61);
-		String line7 = m.get(7);	//	Glasgow Coma Score
+		String line7 = m.get(7);
 		line7 = line7.replaceAll("[a-zA-Z\\s+\\[\\]\\_/(15)×]", "");
 		temp.add(line7);
-		String line71 = m.get(7);	//Malnutrition
+		String line71 = m.get(7);
 		line71 = line71.replaceAll("[a-zA-Z\\s+\\[\\]\\_/()0-9]", "");
 		if(line71.charAt(0)=='×') line71 = "Yes";
 		else if(line71.charAt(1)=='×') line71 = "No";
@@ -200,7 +203,7 @@ public class ExtractPdf {
 	 * List<String> m = lines.subList(38, 48);
 		m.remove(1);
 	 * */
-	public static String m1_CoMorbidities(List<String> lines) {
+	public static String m1_CoMorbidities(List<String> lines,Patient p) {
 		List<String> m = lines.subList(38, 48);
 		m.remove(1);
 	
@@ -214,8 +217,6 @@ public class ExtractPdf {
 		}
 		String line7 = m.get(7).replaceAll("[a-zA-Z\\s+]", "").substring(0,3);
 		n.add(line7);
-		//Iterate through the cleaned data results and 
-		//record the answers corresponding to the mark locations
 		for(String s:n) {
 			if(s.charAt(0)=='×') s = "Yes";
 			else if(s.charAt(1)=='×') s = "No";
@@ -231,7 +232,10 @@ public class ExtractPdf {
 			else if(line8.charAt(2)=='×') line8 = "No";
 			else line8 = "Unknown";
 		temp.add(line8);
-		
+		//Count the number of patient comorbidities
+		for(String s:temp) {
+			if(s.equals("Yes")) p.addNum_comorbidities();
+		}
 		return  ListToString(temp);
 	}
 	/**
@@ -257,7 +261,7 @@ public class ExtractPdf {
 	 * Take out the data from target table and change to CSV string.
 	 * List<String> m = lines.subList(64, 81);
 	 * */
-	public static String m1_SymptomsAD(List<String> lines) {
+	public static String m1_SymptomsAD(List<String> lines,Patient p) {
 		List<String> m = lines.subList(64, 81);
 		
 		ArrayList<String> temp = new ArrayList<String>();
@@ -275,10 +279,24 @@ public class ExtractPdf {
 			else if(line.charAt(5)=='×') res = "Unknown";
 			temp.add(res);
 		}
-//		System.out.println(temp.get(0));
-//		System.out.println(temp.get(2));
-//		System.out.println(temp.get(16));
-//		System.out.println(temp.get(20));
+		//Writes information about important symptoms to the Patient object
+		if(temp.get(0).equals("Yes")) {
+			p.setFever(true);
+			p.addNumCovidSym();
+		}
+		if(temp.get(2).equals("Yes")) {
+			p.setCough(true);
+			p.addNumCovidSym();
+		}
+		if(temp.get(16).equals("Yes")) {
+			p.setMuscleAches(true);
+			p.addNumCovidSym();
+		}
+		if(temp.get(2).equals("Yes")) {
+			p.setFatigue(true);
+			p.addNumCovidSym();
+		}
+		
 		//extract data from 11-15 until "If bleeding: specify site(s):"
 		List<String> rest = new ArrayList<>();
 		rest.add(m.get(11));rest.add(m.get(13));rest.add(m.get(15));
@@ -308,19 +326,19 @@ public class ExtractPdf {
 	 * calling all the method above.
 	 * from Beginning -----to -----SymptomsAD in this PDF
 	 * **/
-	public static String m1_overall(List<String> lines) {
+	public static String m1_overall(List<String> lines,Patient p) {
 		String result ="";
 		List<String> input = new ArrayList<String>(lines);
 		//take all the data out and store them in the String
-		String m1basicinfo = ExtractPdf.m1_basicInfo(lines);
-		String m1Clinical = ExtractPdf.m1_Clinical(lines);
-		String m1Demographics = ExtractPdf.m1_Demographics(lines);
-		String m1Vitalsigns = ExtractPdf.m1_Vitalsigns(lines);
-		String m1CoMorbidities = ExtractPdf.m1_CoMorbidities(lines);
+		String m1basicinfo = AnalysePdf.m1_basicInfo(lines);
+		String m1Clinical = AnalysePdf.m1_Clinical(lines);
+		String m1Demographics = AnalysePdf.m1_Demographics(lines,p);
+		String m1Vitalsigns = AnalysePdf.m1_Vitalsigns(lines);
+		String m1CoMorbidities = AnalysePdf.m1_CoMorbidities(lines,p);
 		//here I need to use a new list "input" to do this job, because the m1_CoMorbidities(lines)
 		//will change the order of someplace and cause problem.
-		String m1ChronicMedication = ExtractPdf.m1_ChronicMedication(input);
-		String m1SymptomsAD = ExtractPdf.m1_SymptomsAD(input);
+		String m1ChronicMedication = AnalysePdf.m1_ChronicMedication(input);
+		String m1SymptomsAD = AnalysePdf.m1_SymptomsAD(input,p);
 		
 		//add all the result string together;
 		result = m1basicinfo+","+m1Clinical+","+m1Demographics+","+m1Vitalsigns+","+m1CoMorbidities+","+m1ChronicMedication+","+m1SymptomsAD;
@@ -331,10 +349,10 @@ public class ExtractPdf {
 	
 	
 	public static void main(String[] args) throws IOException {
-		File file = new File("ISARIC_COVID-19.pdf");
+		File file = new File("ISARIC_M1.pdf");
 		ArrayList<String> lines = extractPdf(file);
 		for(int i=0;i<lines.size();i++) {
-			System.out.println(lines.get(i));
+			System.out.println("line"+i+": "+lines.get(i));
 		}
 		//List<String> m1SymptomsAD = lines.subList(64, 81);
 		//List<String> m1basicInfo = lines.subList(0, 11);
@@ -345,7 +363,7 @@ public class ExtractPdf {
 		
 		
 		
-		String stuff = ExtractPdf.m1_SymptomsAD(lines);
+//		String stuff = ExtractPdf.m1_overall(lines);
 //		System.out.println(stuff);
 //		String path = "E:\\test\\overall.txt";
 //		FileTool.writeUpdate(path, stuff);

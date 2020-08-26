@@ -7,6 +7,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import view.AnalysisPage;
 import view.ExtractPage;
 import view.GeneratPage;
 import view.HomePage;
@@ -33,7 +34,12 @@ public class HomeController implements ActionListener{
 				JOptionPane.showMessageDialog(null, "No file choosen, you need to choose a file","Wrong operation",JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		
+		if(e.getSource() == view.getAnalyseButton()) {
+			view.getFrame().dispose();
+			AnalysisPage ap = new AnalysisPage();
+			ap.getFrame().setVisible(true);	
+		}
+
 		if(e.getSource() == view.getCreateButton()) {
 			view.getFrame().dispose();
 			GeneratPage gc = new GeneratPage();
