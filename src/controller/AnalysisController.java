@@ -97,7 +97,8 @@ public class AnalysisController implements ActionListener{
 					view.getContent().add(label5);
 					view.getContent().add(label6);
 				}
-				
+				JLabel label7 = new JLabel("---------------------------------------------------------------------------------------------");
+				view.getContent().add(label7);
 				view.getScrollPane().setViewportView(view.getContent());
 				
 				

@@ -68,8 +68,9 @@ public class HomePage {
 		titleOfHome.setBounds(164, 10, 387, 102);
 		frmHomepage.getContentPane().add(titleOfHome);
 		
-		extractButton = new JButton("<html>          Extract Data from PDF          <br>Click here to upload your PDF file</html>");
-		extractButton.setFont(new Font("Bell MT", Font.BOLD, 20));
+		//extractButton = new JButton("<html>          Extract Data from PDF          <br>Click here to upload your PDF file</html>");
+		extractButton = new JButton("Extract Data from PDF");
+		extractButton.setFont(new Font("Bell MT", Font.BOLD, 23));
 		extractButton.setBounds(26, 122, 346, 80);
 		extractButton.addActionListener(controller);
 		frmHomepage.getContentPane().add(extractButton);
