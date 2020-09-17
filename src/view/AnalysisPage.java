@@ -24,7 +24,7 @@ public class AnalysisPage {
 	private JButton IntroduceButton,backButton;
 	private JButton analyseButton;
 	private JLabel analyseLabel;
-	private JLabel lblClickInformationOf;
+	private JLabel analyseLabel2;
 	
 	
 	
@@ -80,6 +80,7 @@ public class AnalysisPage {
 		IntroduceButton.setFont(new Font("Century Gothic", Font.PLAIN, 17));
 		IntroduceButton.setBounds(416, 386, 273, 46);
 		IntroduceButton.addActionListener(controller);
+		IntroduceButton.setVisible(false);
 		frame.getContentPane().add(IntroduceButton);
 		
 		backButton = new JButton("Back");
@@ -107,9 +108,9 @@ public class AnalysisPage {
 		analyseLabel.setBounds(21, 10, 629, 30);
 		frame.getContentPane().add(analyseLabel);
 		
-		lblClickInformationOf = new JLabel("Click the Information button to learn more about relevant information and data");
-		lblClickInformationOf.setFont(new Font("Century Gothic", Font.PLAIN, 17));
-		lblClickInformationOf.setBounds(21, 38, 688, 30);
-		frame.getContentPane().add(lblClickInformationOf);
+		analyseLabel2 = new JLabel("Click the Information button to learn more about relevant information and data");
+		analyseLabel2.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+		analyseLabel2.setBounds(21, 38, 688, 30);
+		frame.getContentPane().add(analyseLabel2);
 	}
 }
